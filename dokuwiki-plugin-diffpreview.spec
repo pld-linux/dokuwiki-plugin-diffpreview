@@ -1,15 +1,16 @@
+# http://bugs.splitbrain.org/index.php?do=details&task_id=1673
 %define		plugin		diffpreview
 Summary:	DokuWiki diff preview plugin
 Summary(pl.UTF-8):	Wtyczka diffpreview dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
 Version:	20100110
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-# Source0Download: http://bugs.splitbrain.org/index.php?getfile=280
+# Source0Download: http://bugs.splitbrain.org/index.php?getfile=282
 Source0:	diffpreview.zip
-# Source0-md5:	c3a2fd5680aa733b4bec116c59786b68
-URL:		http://wiki.splitbrain.org/plugin:diffpreview
+# Source0-md5:	ff537be6d8863ea64e8e1952495aab21
+URL:		http://www.dokuwiki.org/plugin:diffpreview
 BuildRequires:	rpmbuild(macros) >= 1.520
 Requires:	dokuwiki >= 20090214
 BuildArch:	noarch
