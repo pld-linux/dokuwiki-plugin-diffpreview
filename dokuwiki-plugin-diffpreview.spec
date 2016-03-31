@@ -11,7 +11,7 @@ Source0:	https://github.com/adrianheine/dokuwiki-diffpreview/archive/0f215700/%{
 # Source0-md5:	e6190c6a2ee9895d8a57967ff6f53869
 URL:		https://www.dokuwiki.org/plugin:diffpreview
 BuildRequires:	rpmbuild(macros) >= 1.520
-Requires:	dokuwiki >= 20090214
+Requires:	dokuwiki >= 20131208
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
