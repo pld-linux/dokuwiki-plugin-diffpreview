@@ -3,16 +3,14 @@
 Summary:	DokuWiki diff preview plugin
 Summary(pl.UTF-8):	Wtyczka diffpreview dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20100110
+Version:	20110120
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-# Source0Download: http://bugs.splitbrain.org/index.php?getfile=282
-Source0:	diffpreview.zip
-# Source0-md5:	ff537be6d8863ea64e8e1952495aab21
-URL:		http://www.dokuwiki.org/plugin:diffpreview
+Source0:	https://github.com/adrianheine/dokuwiki-diffpreview/archive/0f215700/%{name}.tar.gz
+# Source0-md5:	e6190c6a2ee9895d8a57967ff6f53869
+URL:		https://www.dokuwiki.org/plugin:diffpreview
 BuildRequires:	rpmbuild(macros) >= 1.520
-BuildRequires:	unzip
 Requires:	dokuwiki >= 20090214
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,7 +25,16 @@ Adds a new button to show a diff-like preview of all changes while
 editing a page.
 
 %prep
-%setup -q -n %{plugin}
+%setup -qc
+mv dokuwiki-diffpreview-*/* .
+
+%build
+version=$(awk '/^date/{print $2}' plugin.info.txt)
+if [ "$(echo "$version" | tr -d -)" != %{version} ]; then
+	: %%{version} mismatch
+	exit 1
+fi
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -51,3 +58,4 @@ fi
 %dir %{plugindir}
 %{plugindir}/*.php
 %{plugindir}/*.js
+%{plugindir}/*.txt
