@@ -1,17 +1,21 @@
-# http://bugs.splitbrain.org/index.php?do=details&task_id=1673
+%define		subver		2014-07-16
+%define		ver			%(echo %{subver} | tr -d -)
 %define		plugin		diffpreview
+%define		php_min_version 5.3.0
+%include	/usr/lib/rpm/macros.php
 Summary:	DokuWiki diff preview plugin
 Summary(pl.UTF-8):	Wtyczka diffpreview dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20110120
+Version:	%{ver}
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	https://github.com/adrianheine/dokuwiki-diffpreview/archive/0f215700/%{name}.tar.gz
-# Source0-md5:	e6190c6a2ee9895d8a57967ff6f53869
+Source0:	https://github.com/issmirnov/dokuwiki-diffpreview/archive/c6fd2c86/%{plugin}-%{version}.tar.gz
+# Source0-md5:	a270cd74b41e9a8002635ac1245968cf
 URL:		https://www.dokuwiki.org/plugin:diffpreview
 BuildRequires:	rpmbuild(macros) >= 1.520
 Requires:	dokuwiki >= 20131208
+Requires:	php(core) >= %{php_min_version}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,6 +44,7 @@ fi
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{plugindir}
 cp -a . $RPM_BUILD_ROOT%{plugindir}
+%{__rm} $RPM_BUILD_ROOT%{plugindir}/README.md
 
 # find locales
 %find_lang %{name}.lang
@@ -55,6 +60,7 @@ fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc README.md
 %dir %{plugindir}
 %{plugindir}/*.php
 %{plugindir}/*.js
