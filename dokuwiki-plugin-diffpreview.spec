@@ -6,7 +6,7 @@ Summary:	DokuWiki diff preview plugin
 Summary(pl.UTF-8):	Wtyczka diffpreview dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
 Version:	%{ver}
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/issmirnov/dokuwiki-diffpreview/archive/c6fd2c86/%{plugin}-%{version}.tar.gz
