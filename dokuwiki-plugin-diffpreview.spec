@@ -1,4 +1,4 @@
-%define		subver		2014-07-16
+%define		subver		2019-04-09
 %define		ver			%(echo %{subver} | tr -d -)
 %define		plugin		diffpreview
 %define		php_min_version 5.3.0
@@ -6,11 +6,11 @@ Summary:	DokuWiki diff preview plugin
 Summary(pl.UTF-8):	Wtyczka diffpreview dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
 Version:	%{ver}
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	https://github.com/issmirnov/dokuwiki-diffpreview/archive/c6fd2c86/%{plugin}-%{version}.tar.gz
-# Source0-md5:	a270cd74b41e9a8002635ac1245968cf
+Source0:	https://github.com/issmirnov/dokuwiki-diffpreview/archive/33e32965/%{plugin}-%{version}.tar.gz
+# Source0-md5:	0b086964d82ba78bba2cf5cbde598e45
 URL:		https://www.dokuwiki.org/plugin:diffpreview
 BuildRequires:	rpmbuild(macros) >= 1.520
 Requires:	dokuwiki >= 20131208
@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		dokuconf	/etc/webapps/dokuwiki
 %define		dokudir	/usr/share/dokuwiki
 %define		plugindir	%{dokudir}/lib/plugins/%{plugin}
-%define		find_lang 	%{_usrlibrpm}/dokuwiki-find-lang.sh %{buildroot}
+%define		find_lang 	%{_rpmconfigdir}/dokuwiki-find-lang.sh %{buildroot}
 
 %description
 Adds a new button to show a diff-like preview of all changes while
@@ -43,7 +43,7 @@ fi
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{plugindir}
 cp -a . $RPM_BUILD_ROOT%{plugindir}
-%{__rm} $RPM_BUILD_ROOT%{plugindir}/README.md
+%{__rm} $RPM_BUILD_ROOT%{plugindir}/{README.md,screenshot1.png}
 
 # find locales
 %find_lang %{name}.lang
